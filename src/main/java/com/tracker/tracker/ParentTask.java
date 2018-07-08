@@ -12,6 +12,7 @@ public class ParentTask implements Serializable {
 
     @Id
     @Column(name="parent_id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long parentId;
     @Column(name="parent_task")
     private String parentTask;

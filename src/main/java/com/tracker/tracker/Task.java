@@ -10,8 +10,9 @@ public class Task implements Serializable {
 
     @Id
     @Column(name="task_id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long taskId;
-    @ManyToOne
+    @ManyToOne (cascade=CascadeType.MERGE)
     @JoinColumn(name="parent_id")
 	private ParentTask parentTask;
 	private String task;
@@ -22,6 +23,7 @@ public class Task implements Serializable {
 	 @Column(name="end_date")
 	private Date endDate;
 	private Long priority;
+	private Boolean active;
 	
 	public Long getTaskId() {
 		return taskId;
@@ -59,6 +61,12 @@ public class Task implements Serializable {
 	}
 	public void setPriority(Long priority) {
 		this.priority = priority;
+	}
+	public Boolean getActive() {
+		return active;
+	}
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	
